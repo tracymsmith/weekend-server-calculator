@@ -33,3 +33,14 @@ function handleSubmit(event){
         console.log('Error:', error);
     })
 }
+function updateUI(){
+    axios.get('/calculations')
+    .then(response => {
+        const data = response.data;
+        const resultHistory = document.querySelector('[data-testid="resultHistory"]');
+        const recentResult = document.querySelector('[data-testid="recentResult"]');
+        
+        resultHistory.innerHTML = '';
+        console.log('Updated UI with Data:', data);
+    })
+}
