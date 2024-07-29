@@ -12,7 +12,7 @@ let calculations = []
 
 // Here's a wonderful place to make some routes:
 app.get('/calculations', (req, res) => {
-  res.status(200).json(calculations);
+  res.send(calculations);
 });
 // GET /calculations
 app.post('/calculations', (req, res) => {
@@ -43,7 +43,7 @@ app.post('/calculations', (req, res) => {
     result
   };
   calculations.push(calculation);
-  res.status(201).json(calculation);
+  res.status(201).send(calculation);
 });
 // POST /calculations
 

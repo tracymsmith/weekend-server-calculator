@@ -60,4 +60,4 @@ function updateUI(){
 document.addEventListener('DOMContentLoaded', function(){
     updateUI();
     console.log('Updated Loaded Calculations:');
-})
+});
