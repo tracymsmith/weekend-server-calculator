@@ -22,7 +22,7 @@ function handleSubmit(event){
         numTwo,
         operator: selectedOperator
     };
-    console.log('Submit Function Working:', handleSubmit);
+    console.log('Submit Function Working:', calculationData);
 
     axios.post('/calculations', calculationData)
     .then(response => {
@@ -30,7 +30,7 @@ function handleSubmit(event){
         console.log('Response from Server:', response);
     })
     .catch(error => {
-        console.log('Error:', error);
+        console.error('Error', error);
     })
 }
 function updateUI(){
@@ -57,7 +57,7 @@ function updateUI(){
         console.log('Error:', error);
     });
 }
-document.addEventListener('DOMContentLoad', function(){
+document.addEventListener('DOMContentLoaded', function(){
     updateUI();
     console.log('Updated Loaded Calculations:');
-});
+})

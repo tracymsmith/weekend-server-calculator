@@ -11,9 +11,40 @@ let calculations = []
 
 
 // Here's a wonderful place to make some routes:
-
+app.get('/calculations', (req, res) => {
+  res.status(200).json(calculations);
+});
 // GET /calculations
-
+app.post('/calculations', (req, res) => {
+  const {numOne, numTwo, operator} = req.body;
+  console.log('Received calculation request:', req.body);
+  if (typeof numOne !== 'number'|| typeof numTwo !== 'number' || typeof operator !== 'string'){
+    return res.status(400).send('Invalid Input');
+  }
+  let result;
+  switch (operator){
+    case '+':
+    result = numOne + numTwo;
+    break;
+    case '-':
+    result = numOne - numTwo;
+    break;
+    case '*':
+    result = numOne * numTwo;
+    break;
+    case '/':
+    result = numOne / numTwo;
+    break;
+  }
+  const calculation = {
+    numOne,
+    numTwo,
+    operator,
+    result
+  };
+  calculations.push(calculation);
+  res.status(201).json(calculation);
+});
 // POST /calculations
 
 
