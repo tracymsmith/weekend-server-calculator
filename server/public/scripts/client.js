@@ -42,5 +42,22 @@ function updateUI(){
         
         resultHistory.innerHTML = '';
         console.log('Updated UI with Data:', data);
+        for (let i = 0; i < data.length; i++){
+            const calculation = data[i];
+            const resultItem = document.createElement('div');
+            resultItem.textContent = `${calculation.numOne} ${calculation.operator} ${calculation.numTwo} = ${calculation.result}`;
+            resultHistory.appendChild(resultItem);
+        }
+        if (data.length > 0){
+            const latestCalculation = data[data.length - 1];
+            recentResult.textContent = `Most Recent Results: ${latestCalculation.result}`;
+        }
     })
+    .catch(error => {
+        console.log('Error:', error);
+    });
 }
+document.addEventListener('DOMContentLoad', function(){
+    updateUI();
+    console.log('Updated Loaded Calculations:');
+});
